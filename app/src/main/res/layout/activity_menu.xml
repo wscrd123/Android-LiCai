@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 主菜单：两个功能入口，用竖排线性布局 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F5F7"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- 顶部：姓名和学号（静态写死，运行时不能修改） -->
+    <TextView
+        android:id="@+id/tv_student"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0F766E"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="金融小助手(窦烁2406100206)"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <!-- 大标题 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="💵金融小助手💰"
+        android:textColor="#9D47A1"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp"
+        android:gravity="center"
+        android:text="请选择要使用的功能"
+        android:textColor="#757575"
+        android:textSize="15sp" />
+
+    <!-- 功能一：理财收益计算 -->
+    <Button
+        android:id="@+id/btn_menu_calc"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#9F6F6B"
+        android:text="理财收益计算"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
+    <!-- 功能二：股票预测 -->
+    <Button
+        android:id="@+id/btn_menu_stock"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="#FF9800"
+        android:text="股票预测"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
+    <!-- 底部说明 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:text="《金融系统应用开发与实践》课程作业\n班级：计算机242　学号：2406100206　姓名：窦烁"
+        android:textColor="#9E9E9E"
+        android:textSize="13sp" />
+
+</LinearLayout>

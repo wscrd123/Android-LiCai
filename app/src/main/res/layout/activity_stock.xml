@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 股票收益模拟页 -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F7F6"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="24dp">
+
+        <!-- 顶部：姓名学号（静态写死） -->
+        <TextView
+            android:id="@+id/tv_student"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#0F766E"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="计算机242　窦烁　2406100206"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:gravity="center"
+            android:text="股票收益模拟"
+            android:textColor="#115E59"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_student" />
+
+        <!-- 选股票 -->
+        <Spinner
+            android:id="@+id/sp_stock"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+        <!-- 买入金额 -->
+        <EditText
+            android:id="@+id/et_s_money"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="20dp"
+            android:hint="例如 10000"
+            android:inputType="numberDecimal"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/tv_lb_money"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sp_stock" />
+
+        <TextView
+            android:id="@+id/tv_lb_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="买入金额(元)"
+            android:textColor="#22302F"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/et_s_money"
+            app:layout_constraintBottom_toBottomOf="@id/et_s_money" />
+
+        <!-- 模拟月数 -->
+        <EditText
+            android:id="@+id/et_s_months"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="20dp"
+            android:hint="例如 12（1~120）"
+            android:inputType="number"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/tv_lb_months"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_s_money" />
+
+        <TextView
+            android:id="@+id/tv_lb_months"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="模拟月数"
+            android:textColor="#22302F"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/et_s_months"
+            app:layout_constraintBottom_toBottomOf="@id/et_s_months" />
+
+        <!-- 年化收益率（自动填，可改=自定义） -->
+        <EditText
+            android:id="@+id/et_s_return"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="20dp"
+            android:hint="例如 18"
+            android:inputType="numberDecimal"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/tv_lb_return"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_s_months" />
+
+        <TextView
+            android:id="@+id/tv_lb_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="预期年化(%)"
+            android:textColor="#22302F"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/et_s_return"
+            app:layout_constraintBottom_toBottomOf="@id/et_s_return" />
+
+        <!-- 波动率（自动填，可改=自定义） -->
+        <EditText
+            android:id="@+id/et_s_vol"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="20dp"
+            android:hint="例如 28"
+            android:inputType="numberDecimal"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/tv_lb_vol"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_s_return" />
+
+        <TextView
+            android:id="@+id/tv_lb_vol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="波动率(%)"
+            android:textColor="#22302F"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/et_s_vol"
+            app:layout_constraintBottom_toBottomOf="@id/et_s_vol" />
+
+        <!-- 勾选：跑 100 次统计盈利概率 -->
+        <CheckBox
+            android:id="@+id/cb_multi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="20dp"
+            android:text="模拟 100 次，统计盈利概率（略慢）"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_s_vol" />
+
+        <!-- 开始模拟（图片按钮） -->
+        <ImageButton
+            android:id="@+id/btn_run"
+            android:layout_width="0dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="20dp"
+            android:background="#0F766E"
+            android:contentDescription="开始模拟"
+            android:padding="14dp"
+            android:scaleType="fitCenter"
+            android:src="@android:drawable/ic_media_play"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cb_multi" />
+
+        <!-- 柱状图（自定义 View） -->
+        <com.example.myapplication.BarChartView
+            android:id="@+id/chart"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="16dp"
+            android:background="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_run" />
+
+        <!-- 结果 -->
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="16dp"
+            android:background="#FFFFFF"
+            android:lineSpacingExtra="5dp"
+            android:padding="16dp"
+            android:text="点上面的按钮开始模拟"
+            android:textColor="#115E59"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chart" />
+
+        <!-- 分析 -->
+        <TextView
+            android:id="@+id/tv_analysis"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:background="#FFFFFF"
+            android:lineSpacingExtra="6dp"
+            android:padding="16dp"
+            android:text=""
+            android:textColor="#22302F"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_result" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:text="说明：三支股票的参数为课程演示用的示例数据，不是真实行情，模拟结果不构成投资建议。"
+            android:textColor="#9AA8A6"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_analysis" />
+
+        <Button
+            android:id="@+id/btn_stock_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#0F766E"
+            android:text="返回主菜单"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_analysis"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
